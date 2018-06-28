@@ -1,59 +1,56 @@
 # React & JSX
 snippet rrcc "React Redux Class Component" b
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './${2:$1}.css';
 
-class ${1:`!v expand('%:t:r')`} extends Component {
-	static propTypes = {
-		children: PropTypes.node,
-		className: PropTypes.string,
-		dispatch: PropTypes.func.isRequired,
-	};
-
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return (
-			<div className={styles.base}>
-				$3
-			</div>
-		);
-	}
+const mapStateToProps = state => {
+  const {
+  } = state
+  return {
+  }
 }
+export default connect(mapStateToProps)(class ${1:`!v expand('%:t:r')`} extends React.PureComponent {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    dispatch: PropTypes.func.isRequired,
+  };
 
-function mapStateToProps(state) {
-	return {};
-}
+  constructor(props) {
+    super(props);
+  }
 
-export default connect(mapStateToProps)($1);
+  render() {
+    return (
+      <div className={styles.base}>
+        $3
+      </div>
+    );
+  }
+})
+
 endsnippet
 
 snippet rcc "React Class Component" b
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styles from './${2:$1}.css';
+import styles from './${2:$1}.scss';
 
-class ${1:`!v expand('%:t:r')`} extends Component {
-	static propTypes = {
-		children: PropTypes.node,
-		className: PropTypes.string,
-	};
+class ${1:`!v expand('%:t:r')`} extends React.PureComponent {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+  };
 
-	constructor(props) {
-		super(props);
-	}
+  constructor(props) {
+    super(props);
+  }
 
-	render() {
-		return (
-			<div className={styles.base}>
-				$3
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div className={styles.container}>
+        $3
+      </div>
+    );
+  }
 }
 
 export default $1;
@@ -65,11 +62,11 @@ import PropTypes from 'prop-types';
 import styles from './${2:$1}.css';
 
 function ${1:`!v expand('%:t:r')`}(${3:{...props}}) {
-	return (
-		<div className={styles.base}>
-			$4
-		</div>
-	);
+  return (
+    <div className={styles.base}>
+      $4
+    </div>
+  );
 }
 
 $1.defaultProps = {};
@@ -83,7 +80,7 @@ snippet rsc "React Styled Component" b
 import styled from 'styled-components';
 
 const ${1:`!v expand('%:t:r')`} = styled.${2:div}\`
-	$3
+  $3
 \`;
 
 export default $1;
@@ -93,9 +90,9 @@ snippet rsci "React Styled Component Interpolation" b
 import styled, { css } from 'styled-components';
 
 const ${1:`!v expand('%:t:r')`} = styled.${2:div}\`${props => css\`
-	${3:${props.$4 && \`
-		$5
-	\`}}
+  ${3:${props.$4 && \`
+    $5
+  \`}}
 \`}\`;
 
 export default $1;
@@ -111,13 +108,13 @@ endsnippet
 
 snippet dp "Default Props" b
 ${1:`!v expand('%:t:r')`.}defaultProps = {
-	$2
+  $2
 };
 endsnippet
 
 snippet set "Set State"
 this.setState({
-	${1}: ${2}
+  ${1}: ${2}
 });
 endsnippet
 
@@ -137,51 +134,51 @@ endsnippet
 # Component Lifecycle
 snippet cwm "Component Will Mount" b
 componentWillMount() {
-	$1
+  $1
 }
 endsnippet
 
 snippet cdm "Component Did Mount" b
 componentDidMount() {
-	$1
+  $1
 }
 endsnippet
 
 snippet cwrp "Component Will Receive Props" b
 componentWillReceiveProps(nextProps) {
-	$1
+  $1
 }
 endsnippet
 
 snippet scup "Should Component Update" b
 shouldComponentUpdate(nextProps, nextState) {
-	$1
+  $1
 }
 endsnippet
 
 snippet cwup "Component Will Update" b
 componentWillUpdate(nextProps, nextState) {
-	$1
+  $1
 }
 endsnippet
 
 snippet cdup "Component Did Update" b
 componentDidUpdate(prevProps, prevState) {
-	$1
+  $1
 }
 endsnippet
 
 snippet cwu "Component Will Unmount" b
 componentWillUnmount() {
-	$1
+  $1
 }
 endsnippet
 
 snippet ren "Render"
 render() {
-	return ${1:(
-		${2:<div>${3}</div>}
-	);}
+  return ${1:(
+    ${2:<div>${3}</div>}
+  );}
 }
 endsnippet
 
@@ -189,7 +186,7 @@ endsnippet
 # PropTypes
 snippet pt "PropTypes Definition" b
 ${1:`!v expand('%:t:r')`.}propTypes = {
-	${2:className}: ${3:PropTypes.string},
+  ${2:className}: ${3:PropTypes.string},
 };
 endsnippet
 
@@ -235,7 +232,7 @@ endsnippet
 
 snippet pt.onet "PropTypes oneOfType" w
 PropTypes.oneOfType([
-	$2
+  $2
 ])${1:,}
 endsnippet
 
@@ -249,7 +246,7 @@ endsnippet
 
 snippet pt.sh "PropTyes Shape" w
 PropTypes.shape({
-	$2
+  $2
 })${1:,}
 endsnippet
 
